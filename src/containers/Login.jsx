@@ -1,9 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginForFamily } from "../service/FamilyService";
 
 const Login = () => {
   const navigate = useNavigate();
   const [idShk, setIdShk] = useState();
+  const [passWord, setPassWord] = useState();
+  async function handleLogIn() {
+    if (passWord && idShk) {
+      const response = await LoginForFamily({
+        idSoHoKhau: idShk,
+        password: passWord,
+      });
+      const res = response.data;
+      if (!res.validated) {
+        alert(res.message);
+      } else {
+        localStorage.setItem("family", JSON.stringify(res.hoGiaDinhModel));
+        navigate("/");
+        alert(res.message);
+      }
+    } else {
+      alert("Vui lòng điền đầy đủ thông tin đăng nhập");
+    }
+  }
   return (
     <div>
       <section className="h-full gradient-form bg-gray-200 md:h-screen flex justify-center">
@@ -42,6 +62,8 @@ const Login = () => {
                             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="exampleFormControlInput1"
                             placeholder="Mật khẩu"
+                            value={passWord}
+                            onChange={(e) => setPassWord(e.target.value)}
                           />
                         </div>
                         <div className="text-center pt-1 mb-12 pb-1">
@@ -56,16 +78,13 @@ const Login = () => {
                             #373b44, #4286f4
                           )`,
                             }}
-                            onClick={() => {
-                              navigate("/");
-                              localStorage.setItem("idShk", idShk);
-                            }}
+                            onClick={handleLogIn}
                           >
-                            Log in
+                            Đăng nhập
                           </button>
-                          <a className="text-gray-500" href="#!">
+                          {/* <a className="text-gray-500" href="#!">
                             Forgot password?
-                          </a>
+                          </a> */}
                         </div>
                       </form>
                     </div>
