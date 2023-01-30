@@ -5,7 +5,7 @@ import { getMembersByIdShk } from "../service/MemberService";
 const Members = () => {
   const [members, setMembers] = useState([]);
   useEffect(() => {
-    const idShk = localStorage.getItem("idShk");
+    const idShk = JSON.parse(localStorage.getItem("family")).idSoHoKhau;
     getMembersByIdShk(idShk).then((res) => setMembers(res.data));
   }, []);
   return (

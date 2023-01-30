@@ -10,7 +10,7 @@ const Form = () => {
   const [price, setPrice] = useState("");
   const [certImage, setCertImage] = useState("");
   useEffect(() => {
-    const idShk = localStorage.getItem("idShk");
+    const idShk = JSON.parse(localStorage.getItem("family")).idSoHoKhau;
     getStudentByIdShk(idShk).then((res) => {
       setStudents(res.data);
     });
