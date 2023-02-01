@@ -17,15 +17,19 @@ const MemberCard = ({ member }) => {
         <div className="flex">
           <div className="w-1/2 flex flex-col gap-3">
             <div>
+              <div className="text-sm"> Hộ khẩu</div>
+              <div className="text-2xl">{member.hoGiaDinh.idSoHoKhau}</div>
+            </div>
+            <div>
               <div className="text-sm"> Mã giấy khai sinh</div>
               <div className="text-2xl">{member.maGiayKhaiSinh}</div>
             </div>
+          </div>
+          <div className="w-1/2 flex flex-col justify-start gap-3">
             <div>
               <div className="text-sm">Năm sinh</div>
               <div className="text-2xl">{member.namSinh}</div>
             </div>
-          </div>
-          <div className="w-1/2 flex flex-col justify-start gap-3">
             <div>
               <div className="text-sm"> Giới tính</div>
               <div className="text-2xl">{member.gioiTinh}</div>
