@@ -5,6 +5,7 @@ import Form from "../components/Form";
 import { Routes, Route } from "react-router-dom";
 import Members from "./Members";
 import Landing from "./Landing";
+import Inbox from "./Inbox";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
               <Route path="/register-form" element={<Form />}></Route>
               <Route path="/*" element={<Landing />}></Route>
               <Route path="/member" element={<Members />}></Route>
+              <Route path="/inbox" element={<Inbox />}></Route>
             </Routes>
           </div>
         </div>

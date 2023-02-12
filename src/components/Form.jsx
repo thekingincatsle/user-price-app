@@ -25,7 +25,7 @@ const Form = () => {
   }
 
   async function handleSubmit() {
-    const data = await addRegisterForm({
+    addRegisterForm({
       anhMinhChung: certImage,
       giaiThuong: price,
       danhHieu: null,
@@ -35,16 +35,17 @@ const Form = () => {
       hocSinh: {
         maGiayKhaiSinh,
       },
+    }).then(() => {
+      alert(`Đăng kí nhận thưởng thành công`);
+      navigate("/");
     });
-    alert(`Đăng kí nhận thưởng thành công`);
-    navigate("/");
   }
   return (
     <div className="mx-12 my-3 flex flex-col items-center w-2/3 py-5">
       <div className="text-3xl mb-5">
         Đăng kí nhận thưởng học sinh giỏi năm học 2022-2023
       </div>
-      <form class="w-full max-w-lg">
+      <div class="w-full max-w-lg">
         <div className="flex flex-col gap-5">
           <div class="w-full px-3">
             <label
@@ -169,12 +170,13 @@ const Form = () => {
             <button
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={handleSubmit}
+              type="submit"
             >
               Đăng kí
             </button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

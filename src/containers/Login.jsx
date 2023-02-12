@@ -16,7 +16,7 @@ const Login = () => {
       if (!res.validated) {
         alert(res.message);
       } else {
-        localStorage.setItem("family", JSON.stringify(res.hoGiaDinhModel));
+        localStorage.setItem("family", JSON.stringify(res.hoGiaDinh));
         navigate("/");
         alert(res.message);
       }
